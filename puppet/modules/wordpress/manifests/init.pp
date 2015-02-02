@@ -60,4 +60,23 @@ class wordpress::install {
     source  => 'puppet:///modules/wordpress/wp-tests-config.php',
 	require => Exec['untar-wordpress'],
   }
+
+  # Get modernization plugin
+  package { 'unzip':
+    ensure => present,
+    before => Exec['unzip-xml-rpc-modernization'],
+  }
+
+  exec { 'download-xml-rpc-modernization':
+    command => '/usr/bin/wget https://downloads.wordpress.org/plugin/xml-rpc-modernization.zip',
+    cwd     => '/vagrant/',
+    creates => '/vagrant/xml-rpc-modernization.zip',
+  }
+
+  exec { 'unzip-xml-rpc-modernization':
+    cwd     => '/vagrant/wordpress/wp-content/plugins/',
+    command => '/usr/bin/unzip /vagrant/xml-rpc-modernization.zip',
+    require => Exec['download-wordpress'],
+    creates => '/vagrant/wordpress/wp-content/plugins/xml-rpc-modernization',
+  }
 }
