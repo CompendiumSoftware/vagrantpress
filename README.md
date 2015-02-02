@@ -3,6 +3,10 @@
 *VagrantPress* is a packaged development environment for developing WordPress themes and modules.  
 I initially created this project to aid in developing child modules for a WordPress blog.
 
+*Fork* This project was forked from the original and contains the following updates:
+ * Uses port 9999 instead of 8080 to avoid conflcit with other services
+ * Installs and activates the XML-RPC Modernization WP Plugin
+
 # What's Installed
 
 + Ubuntu Trusty (14.04)
@@ -40,17 +44,17 @@ The procedure for starting up a working WordPress is as follows:
 
 1. Clone the project.  (There’s only master branch.)
 2. Run the command `vagrant up` from the directory
-3. Open your browser to http://localhost:8080
+3. Open your browser to http://localhost:9999
 
 ## Working with the environment
 
 To log in to the local Wordpress installation:
 
-`http://localhost:8080/wp-admin/` the username is `admin`, the password is `vagrant`.
+`http://localhost:9999/wp-admin/` the username is `admin`, the password is `vagrant`.
 
 You can access phpMyAdmin:
 
-`http://localhost:8080/phpmyadmin/` with username `wordpress`, password `wordpress`.
+`http://localhost:9999/phpmyadmin/` with username `wordpress`, password `wordpress`.
 
 ## A Few Details
 
